@@ -1,0 +1,16 @@
+.clj-kondo/.cache
+.cpcache
+.eastwood
+.java-version
+.DS_Store
+.idea
+.lsp/.cache
+.lsp/sqlite.db
+.nrepl-history
+.nrepl-port
+.project
+*~
+/checkouts
+/classes
+/target
+version.edn
