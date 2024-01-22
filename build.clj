@@ -4,7 +4,7 @@
 
 (def lib 'voxmachina/itui)
 (def major 0)
-(def minor 1)
+(def minor 2)
 (def version (format "%d.%d.%s" major minor (b/git-count-revs nil)))
 (def version-file "version.edn")
 (def class-dir "target/classes")
