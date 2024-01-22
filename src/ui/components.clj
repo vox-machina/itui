@@ -4,8 +4,7 @@
 ;;;; Layouts - navbars, cards etc.
 ;;;; ===========================================================================
 
-(reg-component
- :ui.l/navbar-simple
+(reg-component :ui.l/navbar-simple
  (fn [{:keys [link-root nav session] :or {session nil link-root nil nav {}}} title]
    [:nav.navbar.navbar-expand-md.navbar-light.fixed-top.bg-light
     [:div.container-fluid
@@ -14,8 +13,7 @@
       [:span {:class "navbar-toggler-icon"}]]
      [:div {:class "collapse navbar-collapse" :id "navbarCollapse"}]]]))
 
-(reg-component
- :ui.l/card
+(reg-component :ui.l/card
  (fn [{:keys [session link-root] :or {session nil link-root nil}} title & body]
    [:div.card
      [:div.card-header [:h2 title]]
