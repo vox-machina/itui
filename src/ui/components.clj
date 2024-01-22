@@ -8,7 +8,7 @@
 
 ;; REVIEW: plug in parameterise styling to support Bootstrap and other options
 (reg-component :ui.l/navbar-simple
-  (fn [{:keys [link-root nav session] :or {session nil link-root nil nav {}}} title]
+  (fn [{:keys [link-root nav session style] :or {session nil link-root nil nav {} style nil}} title]
     [:nav.navbar.navbar-expand-md.navbar-light.fixed-top.bg-light
      [:div.container-fluid
       [:a {:class "navbar-brand" :href "/"} title]
@@ -18,7 +18,7 @@
 
 ;; REVIEW: plug in parameterised styling to support Bootstrap and other optoins
 (reg-component :ui.l/card
-  (fn [{:keys [session link-root] :or {session nil link-root nil}} title & body]
+  (fn [{:keys [session link-root style] :or {session nil link-root nil style nil}} title & body]
     [:div.card
      [:div.card-header [:h2 title]]
      [:div.card-body body]]))
@@ -29,9 +29,9 @@
 ;; REVIEW: strategy for provisoin of mirror-info styling... what is this CSS?
 (reg-component :ui.c/alert-info
   {:doc "Creates a simple alert with info styling and provided content."}
-  (fn [& content] [:div.alert.alert-info.mirror-info {:role "alert"} content]))
+  (fn [{:keys [style] :or {style nil}} & content] [:div.alert.alert-info.mirror-info {:role "alert"} content]))
 
 ;; REVIEW: strategy for provision of mirror-info styling... what is this CSS?
 (reg-component :ui.c/alert-success
   {:doc "Creates a simple alert with success styling and provided content."}
-  (fn [& content] [:div.col-lg-9 {:role "main"} [:div.alert.alert-success.mirror-info {:role "alert"} content]]))
+  (fn [{:keys [style] :or {style nil}} & content] [:div.col-lg-9 {:role "main"} [:div.alert.alert-success.mirror-info {:role "alert"} content]]))
