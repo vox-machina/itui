@@ -24,16 +24,16 @@
   This is useful when loading static HTML from disk for example."
   [html] (-> html html->enlive enlive->hiccup))
 
-(def htm-tors
+(def htm-tor
   "An interceptor for sessionless HTML generating Pedestal routes."
   [(body-params) http/html-body])
 
 
-(def ses-tors
+(def ses-tor
   "An interceptor for sessioned HTML generating Pedestal routes where a cookie store session will suffice."
   [(mw/session {:store (cookie/cookie-store)}) mw/params mw/keyword-params (body-params) http/html-body])
 
 (defn page
   "Creates a page template given a session, head, body and variadic forms for content inside body.
   Using hiccup server components provisions for componentisation."
-  [session head body & markup] (response (->html [:ux/html5-doc (head) (body session markup)])))
+  [req head body & markup] (response (->html [:ux/html5-doc (head req) (body req markup)])))
