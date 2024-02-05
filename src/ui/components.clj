@@ -26,6 +26,10 @@
 ;;;; Components - including alerts etc.
 ;;;; ===========================================================================
 
+(reg-component :ui.c/button
+  {:doc "Creates a simple button of a specified type"}
+  (fn [{:keys [type style uri text] :or {style nil type :primary}}] [:a.btn.btn-primary {:href uri :role "button"} "flibble"]))
+
 ;; REVIEW: strategy for provisoin of mirror-info styling... what is this CSS?
 (reg-component :ui.c/alert-info
   {:doc "Creates a simple alert with info styling and provided content."}
