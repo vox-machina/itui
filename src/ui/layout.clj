@@ -1,5 +1,6 @@
 (ns ui.layout
-  (:require [io.pedestal.http :as http]
+  (:require [clojure.data.json :as json]
+            [io.pedestal.http :as http]
             [io.pedestal.http.body-params :refer [body-params]]
             [io.pedestal.http.ring-middlewares :as mw]
             [ring.middleware.session.cookie :as cookie]
@@ -7,6 +8,16 @@
             [net.cgrand.enlive-html :refer [html-resource]]
             [ten-d-c.hiccup-server-components.core :refer [->html]])
   (:import java.io.StringReader))
+
+(defn ->200 [body] {:status 200 :headers {"Content-Type" "application/json"} :body (json/write-str body)})
+
+(defn ->201 [location body] {:status 201 :headers {"Location" location "Content-Type" "application/json"} :body (json/write-str body)})
+
+(defn ->400 [body] {:status 400 :headers {"Content-Type" "application/json"} :body (json/write-str body)})
+
+(defn ->401 [body] {:status 401 :headers {"Content-Type" "application/json"} :body (json/write-str body)})
+
+(defn ->500 [body] {:status 500 :headers {"Content-Type" "application/json"} :body (json/write-str body)})
 
 (defn- enlive->hiccup
   [el]
